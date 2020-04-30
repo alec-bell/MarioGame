@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Sprites;
+
+namespace Sprint0
+{
+    class FireFlowerSprite : ISprite
+    {
+        private float elapsedFrames;
+        private int posX;
+        private int posY;
+        private Rectangle currentFrame;
+        private FireFlowerFrame frame;
+
+        public FireFlowerSprite(int positionX, int positionY, FireFlowerFrame fireFlowerFrame)
+        {
+            posX = positionX;
+            posY = positionY;
+            frame = fireFlowerFrame;
+            currentFrame = SpriteFactory.FireFlower(frame);
+        }
+
+        public void Draw(SpriteBatch sprite)
+        {
+            sprite.Draw(SpriteFactory.itemSpriteSheet, new Rectangle(posX, posY, SpriteFactory.ITEM_WIDTH, SpriteFactory.ITEM_HEIGHT), currentFrame, Color.White);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            elapsedFrames += (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+            if (elapsedFrames > 5 && frame == FireFlowerFrame.FirstFrame)
+            {
+                frame = FireFlowerFrame.Flash1;
+                currentFrame = SpriteFactory.FireFlower(frame);
+                elapsedFrames = 0;
+            }
+            else if (elapsedFrames > 5 && frame == FireFlowerFrame.Flash1)
+            {
+                frame = FireFlowerFrame.Flash2;
+                currentFrame = SpriteFactory.FireFlower(frame);
+                elapsedFrames = 0;
+            }
+            else if (elapsedFrames > 5 && frame == FireFlowerFrame.Flash2)
+            {
+                frame = FireFlowerFrame.Flash3;
+                currentFrame = SpriteFactory.FireFlower(frame);
+                elapsedFrames = 0;
+            }
+            else if (elapsedFrames > 5 && frame == FireFlowerFrame.Flash3)
+            {
+                frame = FireFlowerFrame.FirstFrame;
+                currentFrame = SpriteFactory.FireFlower(frame);
+                elapsedFrames = 0;
+            }
+        }
+    }
+}

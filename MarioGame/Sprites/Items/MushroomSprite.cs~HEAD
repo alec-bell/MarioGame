@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
+
+namespace Sprint0.Sprites
+{
+    class MushroomSprite : ISprite
+    {
+        public int posX;
+        public int posY;
+        public MushroomType type;
+        public Rectangle currentFrame;
+
+        public MushroomSprite(int positionX, int positionY, MushroomType mushroomType)
+        {
+            posX = positionX;
+            posY = positionY;
+            type = mushroomType;
+            currentFrame = SpriteFactory.Mushroom(type);
+        }
+        public void Draw(SpriteBatch sprite)
+        {
+            sprite.Draw(SpriteFactory.itemSpriteSheet, new Rectangle(posX, posY, SpriteFactory.ITEM_WIDTH, SpriteFactory.ITEM_HEIGHT), currentFrame, Color.White);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+    }
+}

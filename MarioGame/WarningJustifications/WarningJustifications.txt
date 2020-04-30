@@ -1,0 +1,53 @@
+Warning CA1811: 'GamepadController.CommandRepeated(ICommand,GamePadState)' appears to have no upstream public or protected callers
+justification: PBI 11 requires the controllers to be able to differentiate between repeated, pressed, and released commands. However
+it is possible to satisfy other pbi requirements without using the keyboard events "repeated", "pressed", and "released".
+
+Warning CA1811: 'GamepadReleased.CommandReleased(ICommand,GamePadState)' appears to have no upstream public or protected callers
+justification: same as the first CA1811 warning
+
+Warning CA1811: 'KeyboardController.CommandReleased(ICommand)' appears to have no upstream public or protected callers
+justification: same as the first CA1811 warning
+
+Warning CA1811: 'KeyboardController.CommandRepeated(ICommand)' appears to have no upstream public or protected callers
+justification: same as the first CA1811 warning
+
+Warning CA1030: Consider making 'ItemSpriteFactory.FireFlower(FireFlowerFrame)' an event
+justification: Warning is being triggered by method name starting with 'Fire', do not want to change method name to avoid confusion
+
+Warning CA1811: 'playerContext.changeToFalling()' appears to have no upstream public or protected callers
+justification: PBI 4 calls for a falling action state to be made, but no key is assigned and player movement is not called for in this sprint.
+The falling action state will be actively used in a future sprint, but for this sprint all that was needed was the implementation.
+
+Warning CA1823: It appears that field 'FireballCommand.player' is never used or is only ever assigned to. Use this field or remove it
+justification: The fireball command is listed as a future command in its PBI's story. It will be called in a future sprint.
+
+Warning CA1823: It appears that field 'PauseCommand.player' is never used or is only ever assigned to. Use this field or remove it
+justification: same as above CA1823 warning, but for pause command.
+
+Warning CA1823: It appears that field 'playerContext.returnState' is never used or is only ever assigned to. Use this field or remove it
+justification: This field will be used for the star state that will be implemented in a future sprint.
+
+Warning CA1811: 'playerContext.mushroom()' appears to have no upstream public or protected callers
+justification: Changing power state based on items will be implemented in a future sprint
+
+Warning CA1811: 'playerContext.star()' appears to have no upstream public or protected callers
+justification: same as above CA1811 warning
+
+Warning CA1811: 'starMario.SmallMario' appears to have no upstream public or protected callers
+justification: The Mario star state will be implemented in a future sprint.
+
+Warning CA1822: The 'this' parameter (or 'Me' in Visual Basic) of 'starMario.SmallMario()' is never used. Mark the member as static
+(or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate
+justification: same as above CA1811 warning
+
+Warning CA1014: Mark 'Sprint1.exe' with CLSCompliant(true) because it exposes externally visible types:
+Justification: You said in class we didn't have to worry about this.
+
+Warning CA1502: MarioSpriteFactory.Mario(MarioColor, MarioState, MarioFrame)' has a cyclomatic complexity of 95. Rewrite or refactor the
+method to reduce complexity to 25. 
+Justification: You said in class I didn't have to worry about this because the bodies of the if statements 
+all returned the same thing and the cohesion is low.
+
+Warning CA1811 'blockContext.hitFromTopSide(playerContext)' appears to have no upstearm public or protected callers.
+Justification: Will be used later for collisions
+
